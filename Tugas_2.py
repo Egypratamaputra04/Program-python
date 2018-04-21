@@ -1,24 +1,25 @@
-jawab = "Y"
+from texttable import Texttable
+table = Texttable ()
+jawab = "y"
 no = 0
-Nama = []
-Nim = []
-Nilai_Tugas = []
-Nilai_Uts = []
-Nilai_Uas = []
-while( jawab == "Y"):
-    Nama.append(input("Nama :"))
-    Nim.append(input("Nim :"))
-    Nilai_Tugas.append(input("Nilai Tugas :"))
-    Nilai_Uts.append(input("Nilai Uts :"))
-    Nilai_Uas.append(input("Nilai Uas :"))
-    jawab = input ("Tambah Data (Y/T)?")
-    no += 1
-print("=======================================================================")
-print("| No | Nama | Nim | Nilai Tugas | Nilai Uts | Nilai Uas | Nilai Akhir |")
-print("=======================================================================")
-for n in range(no):
-    NT = int(Nilai_Tugas[n])
-    NU = int(Nilai_Uts[n])
-    NA = int(Nilai_Uas[n])
-    Akhir = (NT*30/100) + (NU*35/100) + (NA*35/100)
-    print("| {} | {}    | {}    | {}    | {}    | {}    | {}   |".format(n+1,Nama[n],Nim[n],Nilai_Tugas[n],Nilai_Uts[n],Nilai_Uas[n],Akhir))
+nama = []
+nim = []
+n_tugas = []
+n_uts = []
+n_uas = []
+while(jawab == "y"):
+    nama.append(input("Masukkan Nama :"))
+    nim.append(input("Masukkan Nim :"))
+    n_tugas.append(input("Nilai Tugas :"))
+    n_uts.append(input("Nilai UTS :"))
+    n_uas.append(input("Nilai UAS :"))
+    jawab = input("Tambah data (Y/T)?")
+    no +=1
+for i in range(no):
+    nt = int(n_tugas[i])
+    nu = int(n_uts[i])
+    na = int(n_uas[i])
+    akhir = (nt*30/100) + (nu*35/100) + (na*35/100)
+    table.add_rows([['No','Nama','NIM','Tugas','UTS','UAS','Akhir'],
+                    [i+1, nama[i],nim[i],n_tugas[i],n_uts[i],n_uas[i],akhir]])
+print (table.draw())
